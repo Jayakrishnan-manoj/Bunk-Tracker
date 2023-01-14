@@ -12,10 +12,13 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: "Bunk Tracker",
       theme: ThemeData(
-        primaryColor:const  Color(0xFF2cb67d),
         scaffoldBackgroundColor: Colors.white,
+        appBarTheme: const AppBarTheme(
+          backgroundColor: Color(0xFF2cb67d),
+        ),
       ),
       home: HomeScreen(),
     );

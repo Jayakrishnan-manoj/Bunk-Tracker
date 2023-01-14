@@ -17,11 +17,11 @@ class SubjectItem extends StatelessWidget {
         decoration: BoxDecoration(
           gradient: LinearGradient(
             colors: [
-              color.withOpacity(0.7),
+              color.withOpacity(1),
               color,
             ],
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
+            // begin: Alignment.topLeft,
+            // end: Alignment.bottomRight,
           ),
           borderRadius: BorderRadius.circular(20),
         ),

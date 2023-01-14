@@ -14,37 +14,37 @@ const fourthSemCS = [
   ),
   Subject(
     id: 'a3',
-    title: 'PDC',
-    color: Colors.orange,
-  ),
-  Subject(
-    id: 'a4',
     title: 'WT',
     color: Colors.amber,
   ),
   Subject(
-    id: 'a5',
+    id: 'a4',
     title: 'WT-LAB',
     color: Colors.amberAccent,
   ),
   Subject(
-    id: 'a6',
+    id: 'a5',
     title: 'DBMS',
     color: Colors.pink,
   ),
   Subject(
-    id: 'a7',
+    id: 'a6',
     title: 'DBMS-LAB',
     color: Colors.pinkAccent,
   ),
   Subject(
-    id: 'a8',
+    id: 'a7',
     title: 'OS',
     color: Colors.blue,
   ),
   Subject(
-    id: 'a9',
+    id: 'a8',
     title: 'OS-LAB',
     color: Colors.blueAccent,
+  ),
+  Subject(
+    id: 'a9',
+    title: 'PDC',
+    color: Colors.orange,
   ),
 ];

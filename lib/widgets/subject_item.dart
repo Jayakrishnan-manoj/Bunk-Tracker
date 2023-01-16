@@ -19,9 +19,10 @@ class _SubjectItemState extends State<SubjectItem> {
     return InkWell(
       borderRadius: BorderRadius.circular(20),
       child: Container(
-        padding: const EdgeInsets.all(20),
+        padding: const EdgeInsets.all(12),
         decoration: BoxDecoration(
-          color: const Color(0xFF1d2d44),
+          border: Border.all(width: 4, color: const Color(0xFF2cb67d)),
+          color: Colors.white,
           borderRadius: BorderRadius.circular(20),
         ),
         child: Column(
@@ -29,22 +30,23 @@ class _SubjectItemState extends State<SubjectItem> {
             Text(
               widget.title,
               style: const TextStyle(
-                color: Colors.white,
+                color: Color(0xFF1d2d44),
                 fontSize: 22,
                 fontWeight: FontWeight.bold,
               ),
             ),
-            SizedBox(height: 12),
+            const SizedBox(height: 12),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 ElevatedButton(
                   style: ElevatedButton.styleFrom(
-                      elevation: 7,
-                      backgroundColor:
-                          Theme.of(context).appBarTheme.backgroundColor,
-                      shape: CircleBorder()),
+                    elevation: 7,
+                    backgroundColor:
+                        Theme.of(context).appBarTheme.backgroundColor,
+                    shape: const CircleBorder(),
+                  ),
                   onPressed: () {
                     setState(() {
                       attendance--;
@@ -58,17 +60,18 @@ class _SubjectItemState extends State<SubjectItem> {
                 Text(
                   attendance.toString(),
                   style: const TextStyle(
-                    color: Colors.white,
+                    color: Color(0xFF1d2d44),
                     fontWeight: FontWeight.bold,
                     fontSize: 25,
                   ),
                 ),
                 ElevatedButton(
                   style: ElevatedButton.styleFrom(
-                      elevation: 7,
-                      backgroundColor:
-                          Theme.of(context).appBarTheme.backgroundColor,
-                      shape: CircleBorder()),
+                    elevation: 7,
+                    backgroundColor:
+                        Theme.of(context).appBarTheme.backgroundColor,
+                    shape: const CircleBorder(),
+                  ),
                   onPressed: () {
                     setState(() {
                       attendance++;
@@ -87,3 +90,5 @@ class _SubjectItemState extends State<SubjectItem> {
     );
   }
 }
+
+//const Color(0xFF1d2d44)

@@ -14,10 +14,10 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Bunk Tracker"),
+        title: const Text("Bunk Tracker"),
       ),
       body: GridView(
-        padding: EdgeInsets.all(10.0),
+        padding: const EdgeInsets.all(10.0),
         gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
           maxCrossAxisExtent: 200,
           childAspectRatio: 3 / 2,
@@ -26,8 +26,7 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
         children: fourthSemCS
             .map(
-              (subData) =>
-                  SubjectItem(subData.title, subData.color, subData.id),
+              (subData) => SubjectItem(subData.title, subData.id),
             )
             .toList(),
       ),

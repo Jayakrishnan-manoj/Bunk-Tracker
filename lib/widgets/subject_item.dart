@@ -1,3 +1,4 @@
+import 'package:bunk_tracker/helpers/shared.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -11,8 +12,23 @@ class SubjectItem extends StatefulWidget {
   State<SubjectItem> createState() => _SubjectItemState();
 }
 
+
+
 class _SubjectItemState extends State<SubjectItem> {
+
   int attendance = 0;
+
+  @override
+  void initState() {
+    getAttendance(widget.id).then((value) {
+      setState(() {
+        attendance = value;
+      });
+    });
+    super.initState();
+  }
+
+  //int attendance = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -50,6 +66,7 @@ class _SubjectItemState extends State<SubjectItem> {
                   onPressed: () {
                     setState(() {
                       attendance--;
+                      saveAttendance(attendance, widget.id);
                     });
                   },
                   child: const Icon(
@@ -75,6 +92,7 @@ class _SubjectItemState extends State<SubjectItem> {
                   onPressed: () {
                     setState(() {
                       attendance++;
+                      saveAttendance(attendance, widget.id);
                     });
                   },
                   child: const Icon(

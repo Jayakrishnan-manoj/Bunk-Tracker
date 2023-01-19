@@ -1,8 +1,10 @@
+import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:bunk_tracker/data/subject.dart';
 import 'package:bunk_tracker/data/subject_data.dart';
 import 'package:bunk_tracker/widgets/subject_item.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:flutter/material.dart';
+
+
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -17,6 +19,8 @@ class _HomeScreenState extends State<HomeScreen> {
     'CSCE',
   ];
   List<Subject> displayList = fourthSemCS;
+
+  
 
   String _chosenValue = 'CSE';
   @override

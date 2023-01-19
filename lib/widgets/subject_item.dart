@@ -1,6 +1,6 @@
-import 'package:bunk_tracker/helpers/shared.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:bunk_tracker/helpers/shared.dart';
 
 class SubjectItem extends StatefulWidget {
   final String title;
@@ -12,10 +12,7 @@ class SubjectItem extends StatefulWidget {
   State<SubjectItem> createState() => _SubjectItemState();
 }
 
-
-
 class _SubjectItemState extends State<SubjectItem> {
-
   int attendance = 0;
 
   @override
@@ -92,6 +89,7 @@ class _SubjectItemState extends State<SubjectItem> {
                   onPressed: () {
                     setState(() {
                       attendance++;
+
                       saveAttendance(attendance, widget.id);
                     });
                   },

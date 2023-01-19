@@ -23,34 +23,38 @@ class _HomeScreenState extends State<HomeScreen> {
       appBar: AppBar(
         title: const Text("Bunk Tracker"),
         actions: [
-          DropdownButton(
-            icon:const  Icon(
-              FontAwesomeIcons.filter,
-              color: Colors.white,
-            ),
-            dropdownColor: Theme.of(context).appBarTheme.backgroundColor,
-            value: _chosenValue,
-            items: subList.map<DropdownMenuItem<String>>((String value) {
-              return DropdownMenuItem(
-                value: value,
-                child: Text(
-                  value,
-                  style: TextStyle(
-                    fontWeight: FontWeight.w600,
-                    color: Colors.white,
-                  ),
+          SizedBox(
+            
+            child: Padding(
+              padding: const EdgeInsets.only(right:12.0,top: 7.0),
+              child: DropdownButton(
+                underline: Container(),
+                icon: const Icon(
+                  FontAwesomeIcons.filter,
+                  color: Colors.white,
                 ),
-              );
-            }).toList(),
-            // hint: const Icon(
-            //   FontAwesomeIcons.filter,
-            //   color: Colors.white,
-            // ),
-            onChanged: (value) {
-              setState(() {
-                _chosenValue = value!;
-              });
-            },
+                dropdownColor: Colors.white,
+                value: null,
+                items: subList.map<DropdownMenuItem<String>>((String value) {
+                  return DropdownMenuItem(
+                    value: value,
+                    child: Text(
+                      value,
+                      style: const TextStyle(
+                        fontWeight: FontWeight.w600,
+                        color: Colors.black,
+                      ),
+                    ),
+                  );
+                }).toList(),
+                
+                onChanged: (value) {
+                  setState(() {
+                    _chosenValue = value!;
+                  });
+                },
+              ),
+            ),
           ),
         ],
       ),

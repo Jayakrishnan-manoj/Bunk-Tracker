@@ -1,3 +1,4 @@
+import 'package:bunk_tracker/data/subject.dart';
 import 'package:bunk_tracker/data/subject_data.dart';
 import 'package:bunk_tracker/widgets/subject_item.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -15,6 +16,7 @@ class _HomeScreenState extends State<HomeScreen> {
     'CSE',
     'CSCE',
   ];
+  List<Subject> displayList = fourthSemCS;
 
   String _chosenValue = 'CSE';
   @override
@@ -24,9 +26,8 @@ class _HomeScreenState extends State<HomeScreen> {
         title: const Text("Bunk Tracker"),
         actions: [
           SizedBox(
-            
             child: Padding(
-              padding: const EdgeInsets.only(right:12.0,top: 7.0),
+              padding: const EdgeInsets.only(right: 12.0, top: 7.0),
               child: DropdownButton(
                 underline: Container(),
                 icon: const Icon(
@@ -47,10 +48,14 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                   );
                 }).toList(),
-                
                 onChanged: (value) {
                   setState(() {
                     _chosenValue = value!;
+                    if (_chosenValue == 'CSCE') {
+                      displayList = CSCE;
+                    } else {
+                      displayList = fourthSemCS;
+                    }
                   });
                 },
               ),
@@ -66,7 +71,7 @@ class _HomeScreenState extends State<HomeScreen> {
           crossAxisSpacing: 20,
           mainAxisSpacing: 20,
         ),
-        children: fourthSemCS
+        children: displayList
             .map(
               (subData) => SubjectItem(subData.title, subData.id),
             )

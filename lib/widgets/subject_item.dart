@@ -1,3 +1,4 @@
+import 'package:bunk_tracker/data/subject.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:bunk_tracker/helpers/shared.dart';
@@ -89,7 +90,6 @@ class _SubjectItemState extends State<SubjectItem> {
                   onPressed: () {
                     setState(() {
                       attendance++;
-
                       saveAttendance(attendance, widget.id);
                     });
                   },

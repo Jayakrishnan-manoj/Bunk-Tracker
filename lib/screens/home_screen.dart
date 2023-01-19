@@ -24,13 +24,21 @@ class _HomeScreenState extends State<HomeScreen> {
         title: const Text("Bunk Tracker"),
         actions: [
           DropdownButton(
+            icon:const  Icon(
+              FontAwesomeIcons.filter,
+              color: Colors.white,
+            ),
+            dropdownColor: Theme.of(context).appBarTheme.backgroundColor,
             value: _chosenValue,
             items: subList.map<DropdownMenuItem<String>>((String value) {
               return DropdownMenuItem(
                 value: value,
-                child: Icon(
-                  FontAwesomeIcons.filter,
-                  color: Colors.white,
+                child: Text(
+                  value,
+                  style: TextStyle(
+                    fontWeight: FontWeight.w600,
+                    color: Colors.white,
+                  ),
                 ),
               );
             }).toList(),

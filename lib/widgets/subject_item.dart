@@ -1,3 +1,4 @@
+import 'package:bunk_tracker/constants/constants.dart';
 import 'package:bunk_tracker/data/subject.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -43,11 +44,7 @@ class _SubjectItemState extends State<SubjectItem> {
           children: [
             Text(
               widget.title,
-              style: const TextStyle(
-                color: Color(0xFF1d2d44),
-                fontSize: 22,
-                fontWeight: FontWeight.bold,
-              ),
+              style: kGridTextStyle
             ),
             const SizedBox(height: 12),
             Row(
@@ -58,7 +55,7 @@ class _SubjectItemState extends State<SubjectItem> {
                   style: ElevatedButton.styleFrom(
                     elevation: 7,
                     backgroundColor:
-                        Theme.of(context).appBarTheme.backgroundColor,
+                        kAppBarColor,
                     shape: const CircleBorder(),
                   ),
                   onPressed: () {
@@ -74,11 +71,7 @@ class _SubjectItemState extends State<SubjectItem> {
                 ),
                 Text(
                   attendance.toString(),
-                  style: const TextStyle(
-                    color: Color(0xFF1d2d44),
-                    fontWeight: FontWeight.bold,
-                    fontSize: 25,
-                  ),
+                  style: kGridTextStyle,
                 ),
                 ElevatedButton(
                   style: ElevatedButton.styleFrom(
@@ -107,4 +100,3 @@ class _SubjectItemState extends State<SubjectItem> {
   }
 }
 
-//const Color(0xFF1d2d44)

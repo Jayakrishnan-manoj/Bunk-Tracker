@@ -4,8 +4,6 @@ import 'package:bunk_tracker/data/subject.dart';
 import 'package:bunk_tracker/data/subject_data.dart';
 import 'package:bunk_tracker/widgets/subject_item.dart';
 
-
-
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 

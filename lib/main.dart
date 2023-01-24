@@ -1,3 +1,4 @@
+import 'package:bunk_tracker/constants/constants.dart';
 import 'package:bunk_tracker/screens/home_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -17,7 +18,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         scaffoldBackgroundColor:Colors.white ,
         appBarTheme: const AppBarTheme(
-          backgroundColor: Color(0xFF2cb67d),
+          backgroundColor: kAppBarColor
         ),
       ),
       home: HomeScreen(),

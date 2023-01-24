@@ -1,5 +1,6 @@
 import 'package:bunk_tracker/constants/constants.dart';
 import 'package:bunk_tracker/data/subject.dart';
+import 'package:bunk_tracker/widgets/attendance_record.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:bunk_tracker/helpers/shared.dart';
@@ -26,7 +27,7 @@ class _SubjectItemState extends State<SubjectItem> {
     });
     super.initState();
   }
-
+  
   //int attendance = 0;
 
   @override

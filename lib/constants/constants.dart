@@ -6,5 +6,24 @@ const kGridTextStyle = TextStyle(
   fontSize: 25,
 );
 
+const textInputDecoration = InputDecoration(
+  labelStyle: TextStyle(
+    color: Colors.black,
+    fontWeight: FontWeight.w300,
+  ),
+  focusedBorder: OutlineInputBorder(
+    borderSide: BorderSide(
+      color: kAppBarColor,
+      width: 2,
+    ),
+  ),
+  enabledBorder: OutlineInputBorder(
+    borderSide: BorderSide(
+      color: Color(0xFF1c734f),
+      width: 2,
+    ),
+  ),
+);
+
 const kAppBarColor = Color(0xFF2cb67d);
 const kTextColor = Color(0xFF1d2d44);

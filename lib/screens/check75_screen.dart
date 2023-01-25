@@ -16,7 +16,9 @@ class _AttendanceCheckState extends State<AttendanceCheck> {
       appBar: AppBar(
         title: const Text("Attendance75"),
       ),
-      drawer: AppDrawer(),
+      drawer: AppDrawer(
+        isSelected: false,
+      ),
       // body: Padding(
       //   padding: const EdgeInsets.only(
       //     left: 20,

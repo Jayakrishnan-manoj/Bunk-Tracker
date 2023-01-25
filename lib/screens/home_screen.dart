@@ -66,7 +66,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ],
       ),
-      drawer: AppDrawer(),
+      drawer: AppDrawer(isSelected: true,),
       body: SafeArea(
         child: GridView(
           padding: const EdgeInsets.all(10.0),

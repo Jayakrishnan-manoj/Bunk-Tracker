@@ -1,77 +1,72 @@
+import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:bunk_tracker/constants/constants.dart';
 import 'package:bunk_tracker/screens/check75_screen.dart';
-import 'package:bunk_tracker/screens/date_screen.dart';
 import 'package:bunk_tracker/screens/home_screen.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class AppDrawer extends StatelessWidget {
-  const AppDrawer({super.key});
+  AppDrawer({required this.isSelected});
+
+  bool isSelected;
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Drawer(
-        child: Column(
+        child: ListView(
           children: [
-            GestureDetector(
+            ListTile(
+              selectedTileColor: kAppBarColor,
+              selected: isSelected,
+              leading: const Icon(
+                FontAwesomeIcons.chartLine,
+                color: kTextColor,
+              ),
+              title: const Text(
+                "Bunk Trackr",
+                style: TextStyle(
+                  color: kTextColor,
+                  fontSize: 17,
+                ),
+              ),
               onTap: () => Navigator.pushReplacement(
                 context,
                 MaterialPageRoute(
-                  builder: (BuildContext context) => HomeScreen(),
-                ),
-              ),
-              child: Container(
-                height: 70,
-                color: kAppBarColor,
-                child: Padding(
-                  padding: const EdgeInsets.all(10.0),
-                  child: Row(
-                    children: [
-                      const Icon(FontAwesomeIcons.chartLine),
-                      const SizedBox(
-                        width: 20,
-                      ),
-                      const Text(
-                        "Bunk Trackr",
-                        style: TextStyle(
-                          color: kTextColor,
-                          fontSize: 17,
-                        ),
-                      ),
-                    ],
-                  ),
+                  builder: (BuildContext context) => const HomeScreen(),
                 ),
               ),
             ),
-            GestureDetector(
+            ListTile(
+              selectedTileColor: kAppBarColor,
+              selected: !isSelected,
+              leading: const Icon(
+                FontAwesomeIcons.calendar,
+                color: kTextColor,
+              ),
+              title: const Text(
+                "Attendance 75",
+                style: TextStyle(
+                  color: kTextColor,
+                  fontSize: 17,
+                ),
+              ),
               onTap: () => Navigator.pushReplacement(
                 context,
                 MaterialPageRoute(
-                  builder: (BuildContext context) =>  AttendanceCheck(),
+                  builder: (BuildContext context) => const AttendanceCheck(),
                 ),
               ),
-              child: Container(
-                height: 70,
-                child: Padding(
-                  padding: const EdgeInsets.all(10.0),
-                  child: Row(
-                    children: [
-                      const Icon(FontAwesomeIcons.calendar),
-                      const SizedBox(
-                        width: 20,
-                      ),
-                      const Text(
-                        "Attendance 75",
-                        style: TextStyle(
-                          color: kTextColor,
-                          fontSize: 17,
-                        ),
-                      ),
-                    ],
-                  ),
+            ),
+            const ListTile(
+              leading: Icon(
+                FontAwesomeIcons.github,
+                color: kTextColor,
+              ),
+              title: Text(
+                "View Source Code",
+                style: TextStyle(
+                  color: kTextColor,
+                  fontSize: 17,
                 ),
               ),
             ),

@@ -1,3 +1,6 @@
+import 'package:bunk_tracker/constants/constants.dart';
+import 'package:bunk_tracker/screens/check75_screen.dart';
+import 'package:bunk_tracker/widgets/app_drawer.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:bunk_tracker/data/subject.dart';
@@ -17,8 +20,6 @@ class _HomeScreenState extends State<HomeScreen> {
     'CSCE',
   ];
   List<Subject> displayList = fourthSemCS;
-
-  
 
   String _chosenValue = 'CSE';
   @override
@@ -65,19 +66,22 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ],
       ),
-      body: GridView(
-        padding: const EdgeInsets.all(10.0),
-        gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-          maxCrossAxisExtent: 200,
-          childAspectRatio: 3 / 2,
-          crossAxisSpacing: 20,
-          mainAxisSpacing: 20,
+      drawer: AppDrawer(),
+      body: SafeArea(
+        child: GridView(
+          padding: const EdgeInsets.all(10.0),
+          gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+            maxCrossAxisExtent: 200,
+            childAspectRatio: 3 / 2,
+            crossAxisSpacing: 20,
+            mainAxisSpacing: 20,
+          ),
+          children: displayList
+              .map(
+                (subData) => SubjectItem(subData.title, subData.id),
+              )
+              .toList(),
         ),
-        children: displayList
-            .map(
-              (subData) => SubjectItem(subData.title, subData.id),
-            )
-            .toList(),
       ),
     );
   }

@@ -1,5 +1,3 @@
-import 'package:bunk_tracker/constants/constants.dart';
-import 'package:bunk_tracker/screens/check75_screen.dart';
 import 'package:bunk_tracker/widgets/app_drawer.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -66,7 +64,9 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ],
       ),
-      drawer: AppDrawer(isSelected: true,),
+      drawer: AppDrawer(
+        isSelected: true,
+      ),
       body: SafeArea(
         child: GridView(
           padding: const EdgeInsets.all(10.0),

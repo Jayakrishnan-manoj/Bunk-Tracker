@@ -1,4 +1,5 @@
 import 'package:bunk_tracker/constants/constants.dart';
+import 'package:bunk_tracker/constants/reusables.dart';
 import 'package:bunk_tracker/widgets/app_drawer.dart';
 import 'package:flutter/material.dart';
 
@@ -65,7 +66,16 @@ class _AttendanceCheckState extends State<AttendanceCheck> {
                           ),
                           Center(
                             child: ElevatedButton(
-                              onPressed: () {},
+                              onPressed: () {
+                                reqAttendance(
+                                  int.parse(_presentController.text),
+                                  int.parse(_totalController.text),
+                                );
+                                daysToBunk(
+                                  int.parse(_presentController.text),
+                                  int.parse(_totalController.text),
+                                );
+                                                              },
                               style: ElevatedButton.styleFrom(
                                 backgroundColor: kAppBarColor,
                               ),

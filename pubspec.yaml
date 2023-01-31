@@ -35,6 +35,7 @@ dependencies:
   font_awesome_flutter: ^10.3.0
   intl: ^0.18.0
   shared_preferences: ^2.0.16
+  url_launcher: ^6.1.8
 
 dev_dependencies:
   flutter_lints: ^2.0.0

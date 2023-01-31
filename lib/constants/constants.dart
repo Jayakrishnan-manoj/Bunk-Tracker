@@ -25,5 +25,30 @@ const textInputDecoration = InputDecoration(
   ),
 );
 
+const formInputDecoration = InputDecoration(
+  fillColor: Colors.white,
+  focusedBorder: OutlineInputBorder(
+    borderSide: BorderSide(
+      color: Colors.white,
+      width: 2.0,
+    ),
+    borderRadius: BorderRadius.all(
+      Radius.circular(10.0),
+    ),
+  ),
+  enabledBorder: OutlineInputBorder(
+    borderSide: BorderSide(
+      color: Colors.white,
+      width: 2.0,
+    ),
+    borderRadius: BorderRadius.all(
+      Radius.circular(10.0),
+    ),
+  ),
+  labelStyle: TextStyle(
+    color: kAppBarColor,
+  ),
+);
+
 const kAppBarColor = Color(0xFF2cb67d);
 const kTextColor = Color(0xFF1d2d44);

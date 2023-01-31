@@ -12,6 +12,7 @@ class AttendanceCheck extends StatefulWidget {
 class _AttendanceCheckState extends State<AttendanceCheck> {
   TextEditingController _presentController = TextEditingController();
   TextEditingController _totalController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,7 +29,7 @@ class _AttendanceCheckState extends State<AttendanceCheck> {
           Align(
             alignment: Alignment.center,
             child: Padding(
-              padding: const EdgeInsets.all(15.0),
+              padding: const EdgeInsets.all(8.0),
               child: Card(
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(15.0),
@@ -44,27 +45,9 @@ class _AttendanceCheckState extends State<AttendanceCheck> {
                         children: [
                           TextField(
                             controller: _presentController,
-                            decoration: InputDecoration(
-                              fillColor: Colors.white,
-                              focusedBorder: OutlineInputBorder(
-                                borderSide: const BorderSide(
-                                  color: Colors.white,
-                                  width: 2.0,
-                                ),
-                                borderRadius: BorderRadius.circular(10.0),
-                              ),
-                              enabledBorder: OutlineInputBorder(
-                                borderSide: const BorderSide(
-                                  color: Colors.white,
-                                  width: 2.0,
-                                ),
-                                borderRadius: BorderRadius.circular(10.0),
-                              ),
+                            decoration: formInputDecoration.copyWith(
                               hintText: 'Present',
                               labelText: 'No. of days present',
-                              labelStyle: const TextStyle(
-                                color: kAppBarColor,
-                              ),
                             ),
                           ),
                           const SizedBox(
@@ -72,27 +55,9 @@ class _AttendanceCheckState extends State<AttendanceCheck> {
                           ),
                           TextField(
                             controller: _totalController,
-                            decoration: InputDecoration(
-                              fillColor: Colors.white,
-                              focusedBorder: OutlineInputBorder(
-                                borderSide: const BorderSide(
-                                  color: Colors.white,
-                                  width: 2.0,
-                                ),
-                                borderRadius: BorderRadius.circular(10.0),
-                              ),
-                              enabledBorder: OutlineInputBorder(
-                                borderSide: const BorderSide(
-                                  color: Colors.white,
-                                  width: 2.0,
-                                ),
-                                borderRadius: BorderRadius.circular(10.0),
-                              ),
+                            decoration: formInputDecoration.copyWith(
                               hintText: 'Total',
                               labelText: 'Total no. of days',
-                              labelStyle: const TextStyle(
-                                color: kAppBarColor,
-                              ),
                             ),
                           ),
                           const SizedBox(

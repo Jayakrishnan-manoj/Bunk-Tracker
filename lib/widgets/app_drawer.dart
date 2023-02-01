@@ -1,3 +1,4 @@
+import 'package:bunk_tracker/constants/reusables.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:bunk_tracker/constants/constants.dart';
@@ -5,10 +6,17 @@ import 'package:bunk_tracker/screens/check75_screen.dart';
 import 'package:bunk_tracker/screens/home_screen.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-class AppDrawer extends StatelessWidget {
+class AppDrawer extends StatefulWidget {
   AppDrawer({required this.isSelected});
 
   bool isSelected;
+
+  @override
+  State<AppDrawer> createState() => _AppDrawerState();
+}
+
+class _AppDrawerState extends State<AppDrawer> {
+  bool _isLoading = false;
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +26,7 @@ class AppDrawer extends StatelessWidget {
           children: [
             ListTile(
               selectedTileColor: kAppBarColor,
-              selected: isSelected,
+              selected: widget.isSelected,
               leading: const Icon(
                 FontAwesomeIcons.chartLine,
                 color: kTextColor,
@@ -39,7 +47,7 @@ class AppDrawer extends StatelessWidget {
             ),
             ListTile(
               selectedTileColor: kAppBarColor,
-              selected: !isSelected,
+              selected: !widget.isSelected,
               leading: const Icon(
                 FontAwesomeIcons.calendar,
                 color: kTextColor,
@@ -71,9 +79,12 @@ class AppDrawer extends StatelessWidget {
                 ),
               ),
               onTap: () async {
+                setState(() {
+                  _isLoading = true;
+                });
                 String url =
                     "https://github.com/Jayakrishnan-manoj/Bunk-Tracker";
-                var urllaunchable = await canLaunchUrl(
+                var urllaunchable = await launchUrl(
                   Uri.parse(url),
                 );
                 if (urllaunchable) {
@@ -81,7 +92,14 @@ class AppDrawer extends StatelessWidget {
                     Uri.parse(url),
                   );
                 } else {
-                  print("url can't be launched");
+                  showSnackBar(
+                    context,
+                    Colors.red,
+                    "Unable to load link",
+                  );
+                  setState(() {
+                    _isLoading = false;
+                  });
                 }
               },
             ),

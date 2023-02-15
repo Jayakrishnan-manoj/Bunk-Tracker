@@ -13,6 +13,8 @@ class AttendanceCheck extends StatefulWidget {
 class _AttendanceCheckState extends State<AttendanceCheck> {
   TextEditingController _presentController = TextEditingController();
   TextEditingController _totalController = TextEditingController();
+  int required = 0;
+  int canBunk = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -47,8 +49,10 @@ class _AttendanceCheckState extends State<AttendanceCheck> {
                           TextField(
                             controller: _presentController,
                             decoration: formInputDecoration.copyWith(
-                              hintText: 'Present',
                               labelText: 'No. of days present',
+                            ),
+                            style: const TextStyle(
+                              color: kAppBarColor,
                             ),
                           ),
                           const SizedBox(
@@ -57,8 +61,10 @@ class _AttendanceCheckState extends State<AttendanceCheck> {
                           TextField(
                             controller: _totalController,
                             decoration: formInputDecoration.copyWith(
-                              hintText: 'Total',
                               labelText: 'Total no. of days',
+                            ),
+                            style: const TextStyle(
+                              color: kAppBarColor,
                             ),
                           ),
                           const SizedBox(
@@ -67,15 +73,17 @@ class _AttendanceCheckState extends State<AttendanceCheck> {
                           Center(
                             child: ElevatedButton(
                               onPressed: () {
-                                reqAttendance(
-                                  int.parse(_presentController.text),
-                                  int.parse(_totalController.text),
-                                );
-                                daysToBunk(
-                                  int.parse(_presentController.text),
-                                  int.parse(_totalController.text),
-                                );
-                                                              },
+                                setState(() {
+                                  required = reqAttendance(
+                                    int.parse(_presentController.text),
+                                    int.parse(_totalController.text),
+                                  );
+                                  canBunk = daysToBunk(
+                                    int.parse(_presentController.text),
+                                    int.parse(_totalController.text),
+                                  );
+                                });
+                              },
                               style: ElevatedButton.styleFrom(
                                 backgroundColor: kAppBarColor,
                               ),
@@ -83,7 +91,15 @@ class _AttendanceCheckState extends State<AttendanceCheck> {
                                 "check 75",
                               ),
                             ),
-                          )
+                          ),
+                          Text(
+                            Result(canBunk, required),
+                            textAlign: TextAlign.center,
+                            style: const TextStyle(
+                              color: Colors.white,
+                              fontSize: 20,
+                            ),
+                          ),
                         ],
                       ),
                     ),
@@ -91,9 +107,19 @@ class _AttendanceCheckState extends State<AttendanceCheck> {
                 ),
               ),
             ),
-          )
+          ),
         ],
       ),
     );
+  }
+
+  String Result(int bunk, int req) {
+    if (bunk < 0) {
+      return "You need to attend $req more days to attain 75% attendance";
+    } else if (bunk > 0) {
+      return 'you can bunk for $bunk more days';
+    } else {
+      return '';
+    }
   }
 }

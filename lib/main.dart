@@ -16,10 +16,8 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: "Bunk Tracker",
       theme: ThemeData(
-        scaffoldBackgroundColor:Colors.white ,
-        appBarTheme: const AppBarTheme(
-          backgroundColor: kAppBarColor
-        ),
+        scaffoldBackgroundColor: Colors.white,
+        appBarTheme: const AppBarTheme(backgroundColor: kAppBarColor),
       ),
       home: HomeScreen(),
     );

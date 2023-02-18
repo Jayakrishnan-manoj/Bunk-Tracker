@@ -15,6 +15,7 @@ class _AttendanceCheckState extends State<AttendanceCheck> {
   TextEditingController _totalController = TextEditingController();
   int required = 0;
   int canBunk = 0;
+  bool _checked = false;
 
   @override
   Widget build(BuildContext context) {
@@ -82,6 +83,7 @@ class _AttendanceCheckState extends State<AttendanceCheck> {
                                     int.parse(_presentController.text),
                                     int.parse(_totalController.text),
                                   );
+                                  _checked = true;
                                 });
                               },
                               style: ElevatedButton.styleFrom(
@@ -92,14 +94,16 @@ class _AttendanceCheckState extends State<AttendanceCheck> {
                               ),
                             ),
                           ),
-                          Text(
-                            Result(canBunk, required),
-                            textAlign: TextAlign.center,
-                            style: const TextStyle(
-                              color: Colors.white,
-                              fontSize: 20,
-                            ),
-                          ),
+                          _checked
+                              ? Text(
+                                  Result(canBunk, required),
+                                  textAlign: TextAlign.center,
+                                  style: const TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 20,
+                                  ),
+                                )
+                              : const Text(''),
                         ],
                       ),
                     ),
@@ -118,6 +122,8 @@ class _AttendanceCheckState extends State<AttendanceCheck> {
       return "You need to attend $req more days to attain 75% attendance";
     } else if (bunk > 0) {
       return 'you can bunk for $bunk more days';
+    } else if (bunk == 0) {
+      return 'you have perfect attendance!';
     } else {
       return '';
     }

@@ -1,5 +1,6 @@
 import 'package:bunk_tracker/constants/constants.dart';
 import 'package:bunk_tracker/data/subject.dart';
+import 'package:bunk_tracker/screens/date_screen.dart';
 import 'package:bunk_tracker/widgets/attendance_record.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -17,6 +18,7 @@ class SubjectItem extends StatefulWidget {
 
 class _SubjectItemState extends State<SubjectItem> {
   int attendance = 0;
+  Map<String, List<DateTime>> inkwellDates = {};
 
   @override
   void initState() {
@@ -27,13 +29,22 @@ class _SubjectItemState extends State<SubjectItem> {
     });
     super.initState();
   }
-  
+
   //int attendance = 0;
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
       borderRadius: BorderRadius.circular(20),
+      onTap: () => Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => DateScreen(
+            title: widget.title,
+            dates: inkwellDates[widget.title],
+          ),
+        ),
+      ),
       child: Container(
         padding: const EdgeInsets.all(12),
         decoration: BoxDecoration(
@@ -43,10 +54,7 @@ class _SubjectItemState extends State<SubjectItem> {
         ),
         child: Column(
           children: [
-            Text(
-              widget.title,
-              style: kGridTextStyle
-            ),
+            Text(widget.title, style: kGridTextStyle),
             const SizedBox(height: 12),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -55,8 +63,7 @@ class _SubjectItemState extends State<SubjectItem> {
                 ElevatedButton(
                   style: ElevatedButton.styleFrom(
                     elevation: 7,
-                    backgroundColor:
-                        kAppBarColor,
+                    backgroundColor: kAppBarColor,
                     shape: const CircleBorder(),
                   ),
                   onPressed: () {
@@ -85,6 +92,10 @@ class _SubjectItemState extends State<SubjectItem> {
                     setState(() {
                       attendance++;
                       saveAttendance(attendance, widget.id);
+                      if (!inkwellDates.containsKey(widget.title)) {
+                        inkwellDates[widget.title] = [];
+                      }
+                      inkwellDates[widget.title]!.add(DateTime.now());
                     });
                   },
                   child: const Icon(
@@ -100,4 +111,3 @@ class _SubjectItemState extends State<SubjectItem> {
     );
   }
 }
-

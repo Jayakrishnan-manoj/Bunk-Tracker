@@ -1,9 +1,11 @@
 import 'package:bunk_tracker/constants/constants.dart';
+import 'package:bunk_tracker/helpers/shared.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 class DateDialog extends StatefulWidget {
   DateDialog({
+    super.key,
     required this.dateList,
     required this.subName,
   });
@@ -55,8 +57,9 @@ class _DateDialogState extends State<DateDialog> {
                 ),
               )
             : IconButton(
-                onPressed: () {
+                onPressed: () async {
                   widget.dateList[widget.subName]!.add(dateText!);
+                  await saveDates(widget.dateList);
                   Navigator.of(context).pop();
                 },
                 icon: const Icon(

@@ -1,7 +1,5 @@
 import 'package:bunk_tracker/constants/constants.dart';
-import 'package:bunk_tracker/data/subject.dart';
 import 'package:bunk_tracker/screens/date_screen.dart';
-import 'package:bunk_tracker/widgets/attendance_record.dart';
 import 'package:bunk_tracker/widgets/date_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -31,8 +29,6 @@ class _SubjectItemState extends State<SubjectItem> {
     super.initState();
   }
 
-  //int attendance = 0;
-
   @override
   Widget build(BuildContext context) {
     return InkWell(
@@ -42,7 +38,7 @@ class _SubjectItemState extends State<SubjectItem> {
         MaterialPageRoute(
           builder: (context) => DateScreen(
             title: widget.title,
-            dates: inkwellDates[widget.title],
+            subName: widget.title,
           ),
         ),
       ),

@@ -2,6 +2,7 @@ import 'package:bunk_tracker/constants/constants.dart';
 import 'package:bunk_tracker/data/subject.dart';
 import 'package:bunk_tracker/screens/date_screen.dart';
 import 'package:bunk_tracker/widgets/attendance_record.dart';
+import 'package:bunk_tracker/widgets/date_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:bunk_tracker/helpers/shared.dart';
@@ -89,13 +90,13 @@ class _SubjectItemState extends State<SubjectItem> {
                     shape: const CircleBorder(),
                   ),
                   onPressed: () {
+                    popUpDialog(context);
                     setState(() {
                       attendance++;
                       saveAttendance(attendance, widget.id);
                       if (!inkwellDates.containsKey(widget.title)) {
                         inkwellDates[widget.title] = [];
                       }
-                      inkwellDates[widget.title]!.add(DateTime.now());
                     });
                   },
                   child: const Icon(
@@ -107,6 +108,17 @@ class _SubjectItemState extends State<SubjectItem> {
             ),
           ],
         ),
+      ),
+    );
+  }
+
+  popUpDialog(BuildContext context) {
+    showDialog(
+      barrierDismissible: false,
+      context: context,
+      builder: (context) => DateDialog(
+        dateList: inkwellDates,
+        subName: widget.title,
       ),
     );
   }

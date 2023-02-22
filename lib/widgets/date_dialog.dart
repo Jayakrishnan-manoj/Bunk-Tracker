@@ -38,7 +38,12 @@ class _DateDialogState extends State<DateDialog> {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      title: const Text("Add Bunk"),
+      title: const Text(
+        "Add Bunk",
+        style: TextStyle(
+          color: kAppBarColor,
+        ),
+      ),
       content: dateText == null
           ? const Text("No Date Chosen")
           : Text(

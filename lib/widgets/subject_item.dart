@@ -88,8 +88,8 @@ class _SubjectItemState extends State<SubjectItem> {
                   onPressed: () {
                     popUpDialog(context);
                     setState(() {
-                      attendance++;
-                      saveAttendance(attendance, widget.id);
+                      saveAttendance(attendance, widget.id)
+                          .whenComplete(() => attendance++);
                       if (!inkwellDates.containsKey(widget.title)) {
                         inkwellDates[widget.title] = [];
                       }

@@ -43,16 +43,33 @@ class _DateScreenState extends State<DateScreen> {
           : ListView.builder(
               itemCount: _dates.length,
               itemBuilder: (context, index) {
-                return ListTile(
-                  leading: CircleAvatar(
-                    backgroundColor: kAppBarColor,
-                    child: Text(
-                      (index + 1).toString(),
-                      style: const TextStyle(color: Colors.white),
-                    ),
+                return Padding(
+                  padding: const EdgeInsets.only(
+                    top: 8.0,
+                    left: 8.0,
+                    right: 8.0,
                   ),
-                  title: Text(
-                    DateFormat.yMMMd().format(_dates[index]),
+                  child: Card(
+                    elevation: 6,
+                    child: ListTile(
+                      leading: CircleAvatar(
+                        backgroundColor: kAppBarColor,
+                        child: Text(
+                          (index + 1).toString(),
+                          style: const TextStyle(color: Colors.white),
+                        ),
+                      ),
+                      title: Text(
+                        DateFormat.yMMMd().format(_dates[index]),
+                      ),
+                      trailing: IconButton(
+                        onPressed: () {},
+                        icon: const Icon(
+                          Icons.delete,
+                          color: Colors.red,
+                        ),
+                      ),
+                    ),
                   ),
                 );
               },

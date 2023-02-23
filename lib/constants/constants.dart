@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 const kGridTextStyle = TextStyle(
   color: kTextColor,
   fontWeight: FontWeight.bold,
-  fontSize: 25,
+  fontSize: 26,
 );
 
 const textInputDecoration = InputDecoration(

@@ -1,5 +1,6 @@
 import 'package:bunk_tracker/constants/constants.dart';
 import 'package:bunk_tracker/screens/home_screen.dart';
+import 'package:bunk_tracker/widgets/drop_down.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -19,7 +20,7 @@ class MyApp extends StatelessWidget {
         scaffoldBackgroundColor: Colors.white,
         appBarTheme: const AppBarTheme(backgroundColor: kAppBarColor),
       ),
-      home: HomeScreen(),
+      home: BranchScreen(),
     );
   }
 }

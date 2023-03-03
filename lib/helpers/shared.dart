@@ -11,6 +11,16 @@ Future<int> getAttendance(String id) async {
   return sf.getInt(id) ?? 0;
 }
 
+Future<void> saveBranch(String key, String branch) async {
+  final sf = await SharedPreferences.getInstance();
+  sf.setString(key, branch);
+}
+
+Future<String> getBranch(String id) async {
+  final sf = await SharedPreferences.getInstance();
+  return sf.getString(id) ?? 'CSE';
+}
+
 saveDates(Map<String, List<DateTime>> dateList) async {
   final sf = await SharedPreferences.getInstance();
   for (var entry in dateList.entries) {

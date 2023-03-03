@@ -4,7 +4,8 @@ import 'package:bunk_tracker/widgets/app_drawer.dart';
 import 'package:flutter/material.dart';
 
 class AttendanceCheck extends StatefulWidget {
-  const AttendanceCheck({super.key});
+  AttendanceCheck({required this.branch});
+  String branch;
 
   @override
   State<AttendanceCheck> createState() => _AttendanceCheckState();
@@ -26,6 +27,7 @@ class _AttendanceCheckState extends State<AttendanceCheck> {
         title: const Text("Attendance75"),
       ),
       drawer: AppDrawer(
+        branch: widget.branch,
         isSelected: false,
       ),
       body: Stack(

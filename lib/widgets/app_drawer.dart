@@ -7,9 +7,10 @@ import 'package:bunk_tracker/screens/home_screen.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class AppDrawer extends StatefulWidget {
-  AppDrawer({required this.isSelected});
+  AppDrawer({required this.isSelected, required this.branch});
 
   bool isSelected;
+  String branch;
 
   @override
   State<AppDrawer> createState() => _AppDrawerState();
@@ -41,7 +42,8 @@ class _AppDrawerState extends State<AppDrawer> {
               onTap: () => Navigator.pushReplacement(
                 context,
                 MaterialPageRoute(
-                  builder: (BuildContext context) => const HomeScreen(),
+                  builder: (BuildContext context) =>
+                      HomeScreen(branch: widget.branch),
                 ),
               ),
             ),
@@ -62,7 +64,9 @@ class _AppDrawerState extends State<AppDrawer> {
               onTap: () => Navigator.pushReplacement(
                 context,
                 MaterialPageRoute(
-                  builder: (BuildContext context) => const AttendanceCheck(),
+                  builder: (BuildContext context) => AttendanceCheck(
+                    branch: widget.branch,
+                  ),
                 ),
               ),
             ),

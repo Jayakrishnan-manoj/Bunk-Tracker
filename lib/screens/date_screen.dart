@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../widgets/date_dialog.dart';
+
 class DateScreen extends StatefulWidget {
   const DateScreen({super.key, required this.title, required this.subName});
 
@@ -15,6 +17,7 @@ class DateScreen extends StatefulWidget {
 
 class _DateScreenState extends State<DateScreen> {
   List<DateTime> _dates = [];
+  Map<String, List<DateTime>> inkwellDates = {};
 
   @override
   void initState() {
@@ -38,6 +41,18 @@ class _DateScreenState extends State<DateScreen> {
       appBar: AppBar(
         title: Text(widget.title),
       ),
+      floatingActionButton: Padding(
+        padding: const EdgeInsets.all(13.0),
+        child: FloatingActionButton(
+          onPressed: () async {
+            await popUpDialog(context);
+            setState(() {});
+          },
+          backgroundColor: kAppBarColor,
+          child: const Icon(Icons.add),
+        ),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       body: _dates.isEmpty
           ? Center(child: Text('No Bunks for ${widget.title}'))
           : ListView.builder(
@@ -74,6 +89,17 @@ class _DateScreenState extends State<DateScreen> {
                 );
               },
             ),
+    );
+  }
+
+  popUpDialog(BuildContext context) {
+    showDialog(
+      barrierDismissible: false,
+      context: context,
+      builder: (context) => DateDialog(
+        dateList: inkwellDates,
+        subName: widget.title,
+      ),
     );
   }
 }

@@ -37,6 +37,9 @@ class _DateDialogState extends State<DateDialog> {
 
   @override
   Widget build(BuildContext context) {
+    if (widget.dateList[widget.subName] == null) {
+      widget.dateList[widget.subName] = [];
+    }
     return AlertDialog(
       title: const Text(
         "Add Bunk",

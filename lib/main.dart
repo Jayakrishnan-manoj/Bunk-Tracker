@@ -1,18 +1,47 @@
 import 'package:bunk_tracker/constants/constants.dart';
+import 'package:bunk_tracker/helpers/shared.dart';
 import 'package:bunk_tracker/screens/home_screen.dart';
 import 'package:bunk_tracker/widgets/drop_down.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-void main() {
-  runApp(const MyApp());
+import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  // final SharedPreferences prefs = await SharedPreferences.getInstance();
+  // final String? branch = prefs.getString('branch');
+
+  runApp(MyApp());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class MyApp extends StatefulWidget {
+  const MyApp({Key? key}) : super(key: key);
 
-  // This widget is the root of your application.
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  String? branch;
+
+  Future<void> _checkBranch() async {
+    final savedBranch = await getBranch('branch');
+    setState(() {
+      branch = savedBranch == null? '' : savedBranch;
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _checkBranch();
+  }
+
   @override
   Widget build(BuildContext context) {
+    print(branch);
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: "Bunk Tracker",
@@ -20,9 +49,9 @@ class MyApp extends StatelessWidget {
         scaffoldBackgroundColor: Colors.white,
         appBarTheme: const AppBarTheme(backgroundColor: kAppBarColor),
       ),
-      home: BranchScreen(),
+      home: branch == ''
+          ? BranchScreen()
+          : HomeScreen(branch: branch!),
     );
   }
 }
-
-// const Color(0xFF748cab)

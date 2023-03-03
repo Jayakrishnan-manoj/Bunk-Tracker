@@ -21,7 +21,7 @@ class _HomeScreenState extends State<HomeScreen> {
   void initState() {
     getBranch(widget.branch).then((value) {
       setState(() {
-        widget.branch = value;
+        widget.branch = value!;
       });
     });
     if (widget.branch == 'CSE') {
@@ -41,44 +41,6 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Bunk Tracker"),
-        // actions: [
-        //   SizedBox(
-        //     child: Padding(
-        //       padding: const EdgeInsets.only(right: 12.0, top: 7.0),
-        //       child: DropdownButton(
-        //         underline: Container(),
-        //         icon: const Icon(
-        //           FontAwesomeIcons.filter,
-        //           color: Colors.white,
-        //         ),
-        //         dropdownColor: Colors.white,
-        //         value: null,
-        //         items: subList.map<DropdownMenuItem<String>>((String value) {
-        //           return DropdownMenuItem(
-        //             value: value,
-        //             child: Text(
-        //               value,
-        //               style: const TextStyle(
-        //                 fontWeight: FontWeight.w600,
-        //                 color: Colors.black,
-        //               ),
-        //             ),
-        //           );
-        //         }).toList(),
-        //         onChanged: (value) {
-        //           setState(() {
-        //             _chosenValue = value!;
-        //             if (_chosenValue == 'CSCE') {
-        //               displayList = CSCE;
-        //             } else {
-        //               displayList = fourthSemCS;
-        //             }
-        //           });
-        //         },
-        //       ),
-        //     ),
-        //   ),
-        // ],
       ),
       drawer: AppDrawer(
         branch: widget.branch,

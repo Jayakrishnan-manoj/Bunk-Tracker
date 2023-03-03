@@ -16,9 +16,9 @@ Future<void> saveBranch(String key, String branch) async {
   sf.setString(key, branch);
 }
 
-Future<String> getBranch(String id) async {
+Future<String?> getBranch(String id) async {
   final sf = await SharedPreferences.getInstance();
-  return sf.getString(id) ?? 'CSE';
+  return sf.getString(id);
 }
 
 saveDates(Map<String, List<DateTime>> dateList) async {

@@ -8,9 +8,11 @@ class DateDialog extends StatefulWidget {
     super.key,
     required this.dateList,
     required this.subName,
+    required this.onDateAdded,
   });
   Map<String, List<DateTime>> dateList = {};
   final String subName;
+  final Function(DateTime) onDateAdded;
 
   @override
   State<DateDialog> createState() => _DateDialogState();
@@ -32,6 +34,7 @@ class _DateDialogState extends State<DateDialog> {
       setState(() {
         dateText = pickedDate;
       });
+      widget.onDateAdded(pickedDate);
     });
   }
 

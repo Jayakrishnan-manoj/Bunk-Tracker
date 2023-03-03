@@ -99,6 +99,11 @@ class _DateScreenState extends State<DateScreen> {
       builder: (context) => DateDialog(
         dateList: inkwellDates,
         subName: widget.title,
+        onDateAdded: (newDate) {
+          setState(() {
+            _dates.add(newDate);
+          });
+        },
       ),
     );
   }
